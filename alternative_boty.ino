@@ -10,6 +10,7 @@
 #define centerSensor 27
 #define rightSensor 26
 
+
 void setup() {
   // put your setup code here, to run once:
 pinMode(ena,OUTPUT);
@@ -82,10 +83,26 @@ void loop() {
    {
    right();
   }
-
-  // else{
+  if (digitalRead(leftSensor)==LOW && digitalRead(centerSensor)==LOW && digitalRead(rightSensor)==HIGH)
+    {
+       digitalWrite(in1,LOW);
+       digitalWrite(in2,HIGH);
+       analogWrite(ena,200);
+       digitalWrite(in3,HIGH);
+       digitalWrite(in4,LOW);
+       analogWrite(enb,200);
+    }
+  if (digitalRead(leftSensor)==HIGH && digitalRead(centerSensor)==LOW && digitalRead(rightSensor)==LOW)
+    {
+       digitalWrite(in1,HIGH);
+       digitalWrite(in2,LOW);
+       analogWrite(ena,200);
+       digitalWrite(in3,LOW);
+       digitalWrite(in4,HIGH);
+       analogWrite(enb,200);
+  else{
    // stop();
-  // }
+  }
 /*
 
   if (digitalRead(leftSensor)==LOW && digitalRead(centerSensor)==HIGH && digitalRead(rightSensor)==LOW)
